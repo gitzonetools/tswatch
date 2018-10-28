@@ -1,5 +1,11 @@
 import * as plugins from './tswatch.plugins';
 
+export interface ITsWatchConstructorOptions {
+  filePathToWatch: string;
+  commandToExecute: string;
+  timeout?: number;
+}
+
 /**
  * handles the management of watching for foes
  */
@@ -9,15 +15,10 @@ export class TsWatch {
   });
   private currentExecution: plugins.smartshell.IExecResultStreaming;
   private watcher = plugins.fileWatcher();
-  private filePathToWatch: string;
-  private commandToExecute: string;
+  private options: ITsWatchConstructorOptions;
 
-  constructor(optionsArg: {
-    filePathToWatch: string,
-    commandToExecute: string
-  }) {
-    this.filePathToWatch = optionsArg.filePathToWatch;
-    this.commandToExecute = optionsArg.commandToExecute;
+  constructor(optionsArg: ITsWatchConstructorOptions) {
+    this.options = optionsArg;
   }
 
   /**
@@ -25,8 +26,8 @@ export class TsWatch {
    */
   public async start() {
     this.setupCleanup();
-    console.log(`Looking at ${this.filePathToWatch} for changes`);
-    this.watcher.add(this.filePathToWatch); // __dirname refers to the directory of this very file
+    console.log(`Looking at ${this.options.filePathToWatch} for changes`);
+    this.watcher.add(this.options.filePathToWatch); // __dirname refers to the directory of this very file
     this.watcher.on('change', async (file, stat) => {
       console.log('Noticed change!');
       if (!stat) {
@@ -41,14 +42,14 @@ export class TsWatch {
     if (this.currentExecution) {
       process.kill(-this.currentExecution.childProcess.pid);
     }
-    this.currentExecution = await this.smartshellInstance.execStreaming(this.commandToExecute);
+    this.currentExecution = await this.smartshellInstance.execStreaming(this.options.commandToExecute);
     this.currentExecution = null;
   }
 
   /**
    * this method sets up a clean exit strategy
    */
-  private setupCleanup() {
+  private async setupCleanup() {
     const cleanup = () => {
       if (this.currentExecution) {
         process.kill(-this.currentExecution.childProcess.pid);
@@ -66,5 +67,14 @@ export class TsWatch {
       cleanup();
       process.exit(0);
     });
+
+    // handle timeout
+    if (this.options.timeout) {
+      plugins.smartdelay.delayFor(this.options.timeout).then(() => {
+        console.log(`timed out afer ${this.options.timeout} milliseconds! exiting!`);
+        cleanup();
+        process.exit(0);
+      });
+    }
   }
 }

@@ -8,7 +8,7 @@
   "author": "Lossless GmbH",
   "license": "MIT",
   "scripts": {
-    "test": "node ./cli.ts.js test",
+    "test": "node ./cli.ts.js test --timeout 10000",
     "test2": "(tstest test/)",
     "build": "(tsbuild)",
     "format": "(gitzone format)"
@@ -24,7 +24,8 @@
   "dependencies": {
     "@gitzone/tsrun": "^1.1.13",
     "@pushrocks/smartcli": "^3.0.6",
-    "@pushrocks/smartshell": "^2.0.6",
+    "@pushrocks/smartdelay": "^2.0.2",
+    "@pushrocks/smartshell": "^2.0.8",
     "filewatcher": "^3.0.1"
   }
 }

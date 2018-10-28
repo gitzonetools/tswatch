@@ -6,16 +6,18 @@ let testTsWatchInstance: tswatch.TsWatch;
 tap.test('should create a valid TsWatch instance', async () => {
   testTsWatchInstance = new tswatch.TsWatch({
     filePathToWatch: process.cwd(),
-    commandToExecute: 'npm -v'
+    commandToExecute: 'npm -v',
+    timeout: 1000
   });
 });
 
 tap.test('should start the tswatch instance', async () => {
+  testTsWatchInstance.start();
   console.log('test executed');
 });
 
 tap.test('should run abitrary commands', async () => {
-  
+
 });
 
 tap.start();
