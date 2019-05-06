@@ -14,7 +14,7 @@ export class TsWatch {
     executor: 'bash'
   });
   private currentExecution: plugins.smartshell.IExecResultStreaming;
-  private watcher = plugins.fileWatcher();
+  private watcher;
   private options: ITsWatchConstructorOptions;
 
   constructor(optionsArg: ITsWatchConstructorOptions) {

@@ -25,7 +25,6 @@
     "@gitzone/tsrun": "^1.2.6",
     "@pushrocks/smartcli": "^3.0.7",
     "@pushrocks/smartdelay": "^2.0.3",
-    "@pushrocks/smartshell": "^2.0.13",
-    "filewatcher": "^3.0.1"
+    "@pushrocks/smartshell": "^2.0.13"
   }
 }
