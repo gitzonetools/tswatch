@@ -16,8 +16,6 @@ tap.test('should start the tswatch instance', async () => {
   console.log('test executed');
 });
 
-tap.test('should run abitrary commands', async () => {
-
-});
+tap.test('should run abitrary commands', async () => {});
 
 tap.start();

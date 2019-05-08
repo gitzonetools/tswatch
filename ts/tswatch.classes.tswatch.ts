@@ -31,7 +31,7 @@ export class TsWatch {
     const changeObservable = await this.watcher.getObservableFor('change');
     changeObservable.subscribe(() => {
       this.updateCurrentExecution();
-    })
+    });
     this.updateCurrentExecution();
   }
 
@@ -39,7 +39,9 @@ export class TsWatch {
     if (this.currentExecution) {
       process.kill(-this.currentExecution.childProcess.pid);
     }
-    this.currentExecution = await this.smartshellInstance.execStreaming(this.options.commandToExecute);
+    this.currentExecution = await this.smartshellInstance.execStreaming(
+      this.options.commandToExecute
+    );
     this.currentExecution = null;
   }
 

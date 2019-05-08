@@ -2,5 +2,15 @@
   "npmci": {
     "npmGlobalTools": [],
     "npmAccessLevel": "public"
+  },
+  "gitzone": {
+    "module": {
+      "githost": "gitlab.com",
+      "gitscope": "gitzone",
+      "gitrepo": "tswatch",
+      "shortDescription": "watch typescript projects during development",
+      "npmPackagename": "@gitzone/tswatch",
+      "license": "MIT"
+    }
   }
 }

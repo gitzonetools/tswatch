@@ -5,7 +5,7 @@ export const logger = new plugins.smartlog.Smartlog({
     company: 'Some Company',
     companyunit: 'Some CompanyUnit',
     containerName: 'Some Containername',
-    environment: "local",
+    environment: 'local',
     runtime: 'node',
     zone: 'gitzone'
   },
