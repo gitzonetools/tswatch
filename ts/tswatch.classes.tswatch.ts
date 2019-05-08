@@ -14,7 +14,7 @@ export class TsWatch {
     executor: 'bash'
   });
   private currentExecution: plugins.smartshell.IExecResultStreaming;
-  private watcher;
+  private watcher = new plugins.smartchok.Smartchok([], {});
   private options: ITsWatchConstructorOptions;
 
   constructor(optionsArg: ITsWatchConstructorOptions) {
@@ -27,14 +27,11 @@ export class TsWatch {
   public async start() {
     this.setupCleanup();
     console.log(`Looking at ${this.options.filePathToWatch} for changes`);
-    this.watcher.add(this.options.filePathToWatch); // __dirname refers to the directory of this very file
-    this.watcher.on('change', async (file, stat) => {
-      console.log('Noticed change!');
-      if (!stat) {
-        console.log('deleted');
-      }
+    this.watcher.add([this.options.filePathToWatch]); // __dirname refers to the directory of this very file
+    const changeObservable = await this.watcher.getObservableFor('change');
+    changeObservable.subscribe(() => {
       this.updateCurrentExecution();
-    });
+    })
     this.updateCurrentExecution();
   }
 

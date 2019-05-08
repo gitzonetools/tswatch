@@ -23,8 +23,12 @@
   },
   "dependencies": {
     "@gitzone/tsrun": "^1.2.6",
+    "@pushrocks/early": "^3.0.3",
+    "@pushrocks/smartchok": "^1.0.18",
     "@pushrocks/smartcli": "^3.0.7",
     "@pushrocks/smartdelay": "^2.0.3",
+    "@pushrocks/smartlog": "^2.0.19",
+    "@pushrocks/smartlog-destination-local": "^7.0.5",
     "@pushrocks/smartshell": "^2.0.13"
   }
 }
