@@ -1,79 +1,68 @@
 import * as plugins from './tswatch.plugins';
+import * as paths from './tswatch.paths';
+import * as interfaces from './interfaces';
 
-export interface ITsWatchConstructorOptions {
-  filePathToWatch: string;
-  commandToExecute: string;
-  timeout?: number;
-}
+import { Watcher } from './tswatch.classes.watcher';
 
-/**
- * handles the management of watching for foes
- */
 export class TsWatch {
-  private smartshellInstance = new plugins.smartshell.Smartshell({
-    executor: 'bash'
-  });
-  private currentExecution: plugins.smartshell.IExecResultStreaming;
-  private watcher = new plugins.smartchok.Smartchok([], {});
-  private options: ITsWatchConstructorOptions;
+  public watchmode: interfaces.TWatchModes;
+  public watcherMap = new plugins.lik.Objectmap<Watcher>();
 
-  constructor(optionsArg: ITsWatchConstructorOptions) {
-    this.options = optionsArg;
+  constructor(watchmodeArg: interfaces.TWatchModes) {
+    this.watchmode = watchmodeArg; 
   }
 
   /**
-   * start the file
+   * starts the TsWatch instance
    */
-  public async start() {
-    this.setupCleanup();
-    console.log(`Looking at ${this.options.filePathToWatch} for changes`);
-    this.watcher.add([this.options.filePathToWatch]); // __dirname refers to the directory of this very file
-    const changeObservable = await this.watcher.getObservableFor('change');
-    changeObservable.subscribe(() => {
-      this.updateCurrentExecution();
-    });
-    this.updateCurrentExecution();
-  }
-
-  private async updateCurrentExecution() {
-    if (this.currentExecution) {
-      process.kill(-this.currentExecution.childProcess.pid);
-    }
-    this.currentExecution = await this.smartshellInstance.execStreaming(
-      this.options.commandToExecute
-    );
-    this.currentExecution = null;
-  }
-
-  /**
-   * this method sets up a clean exit strategy
-   */
-  private async setupCleanup() {
-    const cleanup = () => {
-      if (this.currentExecution) {
-        process.kill(-this.currentExecution.childProcess.pid);
-      }
-    };
-    process.on('exit', () => {
-      console.log('');
-      console.log('now exiting!');
-      cleanup();
-      process.exit(0);
-    });
-    process.on('SIGINT', () => {
-      console.log('');
-      console.log('ok! got SIGINT We are exiting! Just cleaning up to exit neatly :)');
-      cleanup();
-      process.exit(0);
-    });
-
-    // handle timeout
-    if (this.options.timeout) {
-      plugins.smartdelay.delayFor(this.options.timeout).then(() => {
-        console.log(`timed out afer ${this.options.timeout} milliseconds! exiting!`);
-        cleanup();
-        process.exit(0);
+  public async start () {
+    switch (this.watchmode) {
+      case 'test':
+        const tsWatchInstanceTest = new Watcher({
+          filePathToWatch: paths.cwd,
+          commandToExecute: 'npm run test2',
+          timeout: null
+        });
+        this.watcherMap.add(tsWatchInstanceTest);
+        break;
+      case 'gitzone_npm':
+        const tsWatchInstanceGitzoneNpm = new Watcher({
+          filePathToWatch: paths.cwd,
+          commandToExecute: 'npm run test',
+          timeout: null
+        });
+        this.watcherMap.add(tsWatchInstanceGitzoneNpm);
+        break;
+      case 'gitzone_website':
+        const tsWatchInstanceGitzoneWebsite = new Watcher({
+          filePathToWatch: paths.cwd,
+          commandToExecute: 'npm run test',
+          timeout: null
+        });
+        this.watcherMap.add(tsWatchInstanceGitzoneWebsite);
+        break;
+      case 'echoSomething':
+      const tsWatchInstanceEchoSomething = new Watcher({
+        filePathToWatch: paths.cwd,
+        commandToExecute: 'npm -v',
+        timeout: null
       });
+      this.watcherMap.add(tsWatchInstanceEchoSomething);
+      break;
+      default:
+        break;
     }
+    this.watcherMap.forEach(async watcher => {
+      await watcher.start();
+    });
+  }
+
+  /**
+   * stops the execution of any active Watchers
+   */
+  public async stop () {
+    this.watcherMap.forEach(async watcher => {
+      await watcher.stop();
+    })
   }
 }
