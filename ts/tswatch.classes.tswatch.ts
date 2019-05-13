@@ -18,20 +18,18 @@ export class TsWatch {
   public async start() {
     switch (this.watchmode) {
       case 'test':
-        const tsWatchInstanceTest = new Watcher({
+        this.watcherMap.add(new Watcher({
           filePathToWatch: paths.cwd,
           commandToExecute: 'npm run test2',
           timeout: null
-        });
-        this.watcherMap.add(tsWatchInstanceTest);
+        }));
         break;
       case 'gitzone_npm':
-        const tsWatchInstanceGitzoneNpm = new Watcher({
+        this.watcherMap.add(new Watcher({
           filePathToWatch: paths.cwd,
           commandToExecute: 'npm run test',
           timeout: null
-        });
-        this.watcherMap.add(tsWatchInstanceGitzoneNpm);
+        }));
         break;
       case 'gitzone_website':
         // server directory
