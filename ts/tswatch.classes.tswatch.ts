@@ -9,13 +9,13 @@ export class TsWatch {
   public watcherMap = new plugins.lik.Objectmap<Watcher>();
 
   constructor(watchmodeArg: interfaces.TWatchModes) {
-    this.watchmode = watchmodeArg; 
+    this.watchmode = watchmodeArg;
   }
 
   /**
    * starts the TsWatch instance
    */
-  public async start () {
+  public async start() {
     switch (this.watchmode) {
       case 'test':
         const tsWatchInstanceTest = new Watcher({
@@ -34,21 +34,30 @@ export class TsWatch {
         this.watcherMap.add(tsWatchInstanceGitzoneNpm);
         break;
       case 'gitzone_website':
-        const tsWatchInstanceGitzoneWebsite = new Watcher({
-          filePathToWatch: paths.cwd,
-          commandToExecute: 'npm run test',
+        // server directory
+        this.watcherMap.add(
+          new Watcher({
+            filePathToWatch: plugins.path.join(paths.cwd, './ts/'),
+            commandToExecute: 'npm run start',
+            timeout: null
+          })
+        );
+        
+        // client directory
+        this.watcherMap.add(new Watcher({
+          filePathToWatch: plugins.path.join(paths.cwd, './ts_web/'),
+          commandToExecute: 'npm run build',
           timeout: null
-        });
-        this.watcherMap.add(tsWatchInstanceGitzoneWebsite);
+        }));
         break;
       case 'echoSomething':
-      const tsWatchInstanceEchoSomething = new Watcher({
-        filePathToWatch: paths.cwd,
-        commandToExecute: 'npm -v',
-        timeout: null
-      });
-      this.watcherMap.add(tsWatchInstanceEchoSomething);
-      break;
+        const tsWatchInstanceEchoSomething = new Watcher({
+          filePathToWatch: paths.cwd,
+          commandToExecute: 'npm -v',
+          timeout: null
+        });
+        this.watcherMap.add(tsWatchInstanceEchoSomething);
+        break;
       default:
         break;
     }
@@ -60,9 +69,9 @@ export class TsWatch {
   /**
    * stops the execution of any active Watchers
    */
-  public async stop () {
+  public async stop() {
     this.watcherMap.forEach(async watcher => {
       await watcher.stop();
-    })
+    });
   }
 }
