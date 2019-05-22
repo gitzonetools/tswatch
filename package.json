@@ -7,6 +7,9 @@
   "typings": "dist/index.d.ts",
   "author": "Lossless GmbH",
   "license": "MIT",
+  "bin": {
+    "tswatch": "cli.js"
+  },
   "scripts": {
     "test": "(tstest test/)",
     "build": "(tsbuild)",
