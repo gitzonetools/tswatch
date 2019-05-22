@@ -18,6 +18,6 @@ tswatchCli.addCommand('website').subscribe(async argvArg => {
   logger.log('info', `running watch task for a gitzone website project`);
   const tsWatch = new TsWatch('gitzone_website');
   await tsWatch.start();
-})
+});
 
 tswatchCli.startParse();
