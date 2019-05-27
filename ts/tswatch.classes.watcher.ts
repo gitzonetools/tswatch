@@ -90,7 +90,7 @@ export class Watcher {
    */
   public async stop() {
     await this.smartchokWatcher.stop();
-    if (this.currentExecution) {
+    if (!this.currentExecution.childProcess.killed) {
       process.kill(-this.currentExecution.childProcess.pid);
     }
   }
