@@ -32,6 +32,6 @@
     "@pushrocks/smartdelay": "^2.0.3",
     "@pushrocks/smartlog": "^2.0.19",
     "@pushrocks/smartlog-destination-local": "^7.0.5",
-    "@pushrocks/smartshell": "^2.0.17"
+    "@pushrocks/smartshell": "^2.0.20"
   }
 }
