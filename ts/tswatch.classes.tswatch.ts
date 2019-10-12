@@ -37,6 +37,7 @@ export class TsWatch {
         break;
       case 'gitzone_element':
         const smartserve = new plugins.smartserve.SmartServe({
+          port: 3001,
           injectReload: true,
           serveDir: './dist_web/'
         });
