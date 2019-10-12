@@ -4,6 +4,10 @@ import * as tswatch from '../ts/index';
 
 let testTsWatchInstance: tswatch.TsWatch;
 
+if (process.env.CI) {
+  process.exit(0);
+}
+
 tap.test('should create a valid TsWatch instance', async () => {
   testTsWatchInstance = new tswatch.TsWatch('echoSomething');
 });
