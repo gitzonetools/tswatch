@@ -12,8 +12,7 @@
   },
   "scripts": {
     "test": "(tstest test/)",
-    "build": "(tsbuild)",
-    "format": "(gitzone format)"
+    "build": "(tsbuild)"
   },
   "devDependencies": {
     "@gitzone/tsbuild": "^2.1.17",
@@ -24,6 +23,7 @@
     "tslint-config-prettier": "^1.18.0"
   },
   "dependencies": {
+    "@gitzone/tsbundle": "^1.0.45",
     "@gitzone/tsrun": "^1.2.8",
     "@pushrocks/early": "^3.0.3",
     "@pushrocks/lik": "^3.0.11",
@@ -32,6 +32,7 @@
     "@pushrocks/smartdelay": "^2.0.3",
     "@pushrocks/smartlog": "^2.0.19",
     "@pushrocks/smartlog-destination-local": "^8.0.2",
+    "@pushrocks/smartserve": "^1.1.37",
     "@pushrocks/smartshell": "^2.0.25"
   },
   "files": [
