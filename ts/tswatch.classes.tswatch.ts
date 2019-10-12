@@ -74,7 +74,7 @@ export class TsWatch {
         break;
       case 'echoSomething':
         const tsWatchInstanceEchoSomething = new Watcher({
-          filePathToWatch: paths.cwd,
+          filePathToWatch: plugins.path.join(paths.cwd, './ts'),
           commandToExecute: 'npm -v',
           timeout: null
         });
