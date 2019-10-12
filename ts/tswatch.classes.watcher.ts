@@ -1,9 +1,11 @@
 import * as plugins from './tswatch.plugins';
 import { logger } from './tswatch.logging';
 
+export type TCommandFunction = () => Promise<void>;
+
 export interface IWatcherConstructorOptions {
   filePathToWatch: string;
-  commandToExecute: string;
+  commandToExecute: string | TCommandFunction;
   timeout?: number;
 }
 
@@ -11,9 +13,28 @@ export interface IWatcherConstructorOptions {
  * A watcher keeps track of one child execution
  */
 export class Watcher {
+  /**
+   * used to execute shell commands
+   */
   private smartshellInstance = new plugins.smartshell.Smartshell({
     executor: 'bash'
   });
+
+  /**
+   * used to execute 
+   */
+  private executionTask: plugins.taskbuffer.Task = new plugins.taskbuffer.Task({
+    name: 'watcherCommandFunctionTask',
+    taskFunction: async () => {
+      if (typeof this.options.commandToExecute === 'string') {
+        throw new Error('cannot execute string as task');
+      }
+      await this.options.commandToExecute();
+    },
+    buffered: true,
+    bufferMax: 1
+  });
+
   private currentExecution: plugins.smartshell.IExecResultStreaming;
   private smartchokWatcher = new plugins.smartchok.Smartchok([], {});
   private options: IWatcherConstructorOptions;
@@ -41,16 +62,20 @@ export class Watcher {
    * updates the current execution
    */
   private async updateCurrentExecution() {
-    if (this.currentExecution) {
-      logger.log('ok', `reexecuting ${this.options.commandToExecute}`);
-      process.kill(-this.currentExecution.childProcess.pid);
+    if (typeof this.options.commandToExecute === 'string') {
+      if (this.currentExecution) {
+        logger.log('ok', `reexecuting ${this.options.commandToExecute}`);
+        process.kill(-this.currentExecution.childProcess.pid);
+      } else {
+        logger.log('ok', `executing ${this.options.commandToExecute} for the first time`);
+      }
+      this.currentExecution = await this.smartshellInstance.execStreaming(
+        this.options.commandToExecute
+      );
+      this.currentExecution = null;
     } else {
-      logger.log('ok', `executing ${this.options.commandToExecute} for the first time`);
+      await this.executionTask.trigger();
     }
-    this.currentExecution = await this.smartshellInstance.execStreaming(
-      this.options.commandToExecute
-    );
-    this.currentExecution = null;
   }
 
   /**

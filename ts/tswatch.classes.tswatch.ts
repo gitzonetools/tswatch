@@ -38,8 +38,13 @@ export class TsWatch {
       case 'gitzone_element':
         this.watcherMap.add(
           new Watcher({
-            filePathToWatch: plugins.path.join(paths.cwd, 'ts_web'),
-            commandToExecute: 'npm run build',
+            filePathToWatch: plugins.path.join(paths.cwd, './ts_web/'),
+            commandToExecute: async () => {
+              const tsbundle = new plugins.tsbundle.TsBundle();
+              const htmlHandler = new plugins.tsbundle.HtmlHandler();
+              await tsbundle.buildProduction('./ts_web', 'dist_web');
+              await htmlHandler.copyHtml();
+            },
             timeout: null
           })
         );
