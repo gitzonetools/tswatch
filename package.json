@@ -16,22 +16,33 @@
     "format": "(gitzone format)"
   },
   "devDependencies": {
-    "@gitzone/tsbuild": "^2.1.11",
-    "@gitzone/tstest": "^1.0.24",
-    "@pushrocks/tapbundle": "^3.0.9",
-    "@types/node": "^12.0.2",
-    "tslint": "^5.16.0",
+    "@gitzone/tsbuild": "^2.1.17",
+    "@gitzone/tstest": "^1.0.28",
+    "@pushrocks/tapbundle": "^3.0.13",
+    "@types/node": "^12.7.12",
+    "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0"
   },
   "dependencies": {
-    "@gitzone/tsrun": "^1.2.6",
+    "@gitzone/tsrun": "^1.2.8",
     "@pushrocks/early": "^3.0.3",
-    "@pushrocks/lik": "^3.0.5",
-    "@pushrocks/smartchok": "^1.0.18",
+    "@pushrocks/lik": "^3.0.11",
+    "@pushrocks/smartchok": "^1.0.23",
     "@pushrocks/smartcli": "^3.0.7",
     "@pushrocks/smartdelay": "^2.0.3",
     "@pushrocks/smartlog": "^2.0.19",
-    "@pushrocks/smartlog-destination-local": "^7.0.5",
-    "@pushrocks/smartshell": "^2.0.22"
-  }
+    "@pushrocks/smartlog-destination-local": "^8.0.2",
+    "@pushrocks/smartshell": "^2.0.25"
+  },
+  "files": [
+    "ts/**/*",
+    "ts_web/**/*",
+    "dist/**/*",
+    "dist_web/**/*",
+    "dist_ts_web/**/*",
+    "assets/**/*",
+    "cli.js",
+    "npmextra.json",
+    "readme.md"
+  ]
 }

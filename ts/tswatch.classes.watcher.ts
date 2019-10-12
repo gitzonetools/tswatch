@@ -26,7 +26,7 @@ export class Watcher {
    * start the file
    */
   public async start() {
-    this.setupCleanup();
+    await this.setupCleanup();
     console.log(`Looking at ${this.options.filePathToWatch} for changes`);
     this.smartchokWatcher.add([this.options.filePathToWatch]); // __dirname refers to the directory of this very file
     await this.smartchokWatcher.start();
@@ -84,7 +84,7 @@ export class Watcher {
       });
     }
   }
-  
+
   /**
    * stops the watcher
    */

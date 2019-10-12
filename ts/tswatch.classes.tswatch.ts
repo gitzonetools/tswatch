@@ -18,35 +18,49 @@ export class TsWatch {
   public async start() {
     switch (this.watchmode) {
       case 'test':
-        this.watcherMap.add(new Watcher({
-          filePathToWatch: paths.cwd,
-          commandToExecute: 'npm run test2',
-          timeout: null
-        }));
-        break;
-      case 'gitzone_npm':
-        this.watcherMap.add(new Watcher({
-          filePathToWatch: paths.cwd,
-          commandToExecute: 'npm run test',
-          timeout: null
-        }));
-        break;
-      case 'gitzone_website':
-        // server directory
         this.watcherMap.add(
           new Watcher({
-            filePathToWatch: plugins.path.join(paths.cwd, './ts/'),
-            commandToExecute: 'npm run start',
+            filePathToWatch: paths.cwd,
+            commandToExecute: 'npm run test2',
             timeout: null
           })
         );
-        
+        break;
+      case 'gitzone_npm':
+        this.watcherMap.add(
+          new Watcher({
+            filePathToWatch: paths.cwd,
+            commandToExecute: 'npm run test',
+            timeout: null
+          })
+        );
+        break;
+      case 'gitzone_element':
+        this.watcherMap.add(
+          new Watcher({
+            filePathToWatch: plugins.path.join(paths.cwd, 'ts_web'),
+            commandToExecute: 'npm run build',
+            timeout: null
+          })
+        );
+        break;
+      case 'gitzone_website':
+        this.watcherMap.add(
+          new Watcher({
+            filePathToWatch: plugins.path.join(paths.cwd, './ts/'),
+            commandToExecute: 'npm run startTs',
+            timeout: null
+          })
+        );
+
         // client directory
-        this.watcherMap.add(new Watcher({
-          filePathToWatch: plugins.path.join(paths.cwd, './ts_web/'),
-          commandToExecute: 'npm run build',
-          timeout: null
-        }));
+        this.watcherMap.add(
+          new Watcher({
+            filePathToWatch: plugins.path.join(paths.cwd, './ts_web/'),
+            commandToExecute: 'npm run build',
+            timeout: null
+          })
+        );
         break;
       case 'echoSomething':
         const tsWatchInstanceEchoSomething = new Watcher({
