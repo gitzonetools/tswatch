@@ -36,13 +36,18 @@ export class TsWatch {
         );
         break;
       case 'gitzone_element':
+        const smartserve = new plugins.smartserve.SmartServe({
+          injectReload: true,
+          serveDir: './dist_web/'
+        });
+        await smartserve.start();
         this.watcherMap.add(
           new Watcher({
             filePathToWatch: plugins.path.join(paths.cwd, './ts_web/'),
             commandToExecute: async () => {
               const tsbundle = new plugins.tsbundle.TsBundle();
               const htmlHandler = new plugins.tsbundle.HtmlHandler();
-              await tsbundle.buildProduction('./ts_web', 'dist_web');
+              await tsbundle.buildProduction('./ts_web', './dist_web');
               await htmlHandler.copyHtml();
             },
             timeout: null
