@@ -36,10 +36,11 @@ export class TsWatch {
         );
         break;
       case 'gitzone_element':
+        // lets create a standard server
         const smartserve = new plugins.smartserve.SmartServe({
           port: 3001,
           injectReload: true,
-          serveDir: './dist_web/'
+          serveDir: plugins.path.join(paths.cwd, './dist_web/')
         });
         await smartserve.start();
         this.watcherMap.add(
