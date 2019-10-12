@@ -47,7 +47,7 @@ export class TsWatch {
             commandToExecute: async () => {
               const tsbundle = new plugins.tsbundle.TsBundle();
               const htmlHandler = new plugins.tsbundle.HtmlHandler();
-              await tsbundle.buildProduction('./ts_web', './dist_web');
+              await tsbundle.buildProduction('./ts_web/index.ts', './dist_web/bundle.js');
               await htmlHandler.copyHtml();
             },
             timeout: null
