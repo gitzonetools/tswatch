@@ -74,6 +74,15 @@ export class TsWatch {
           })
         );
         break;
+      case 'gitzone_service':
+          this.watcherMap.add(
+            new Watcher({
+              filePathToWatch: plugins.path.join(paths.cwd, './ts/'),
+              commandToExecute: 'npm run startTs',
+              timeout: null
+            })
+          );
+          break;
       case 'echoSomething':
         const tsWatchInstanceEchoSomething = new Watcher({
           filePathToWatch: plugins.path.join(paths.cwd, './ts'),
