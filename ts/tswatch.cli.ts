@@ -26,4 +26,10 @@ tswatchCli.addCommand('element').subscribe(async argvArg => {
   await tsWatch.start();
 });
 
+tswatchCli.addCommand('npm').subscribe(async argvArg => {
+  logger.log('info', `running watch task for a gitzone element project`);
+  const tsWatch = new TsWatch('gitzone_npm');
+  await tsWatch.start();
+});
+
 tswatchCli.startParse();

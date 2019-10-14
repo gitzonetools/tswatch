@@ -55,7 +55,7 @@ export class Watcher {
     changeObservable.subscribe(() => {
       this.updateCurrentExecution();
     });
-    this.updateCurrentExecution();
+    await this.updateCurrentExecution();
   }
 
   /**

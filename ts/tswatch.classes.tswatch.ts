@@ -7,6 +7,7 @@ import { Watcher } from './tswatch.classes.watcher';
 export class TsWatch {
   public watchmode: interfaces.TWatchModes;
   public watcherMap = new plugins.lik.Objectmap<Watcher>();
+  public smartserve: plugins.smartserve.SmartServe;
 
   constructor(watchmodeArg: interfaces.TWatchModes) {
     this.watchmode = watchmodeArg;
@@ -37,12 +38,11 @@ export class TsWatch {
         break;
       case 'gitzone_element':
         // lets create a standard server
-        const smartserve = new plugins.smartserve.SmartServe({
+        this.smartserve = new plugins.smartserve.SmartServe({
           port: 3001,
           injectReload: true,
           serveDir: plugins.path.join(paths.cwd, './dist_web/')
         });
-        await smartserve.start();
         this.watcherMap.add(
           new Watcher({
             filePathToWatch: plugins.path.join(paths.cwd, './ts_web/'),
@@ -88,12 +88,18 @@ export class TsWatch {
     this.watcherMap.forEach(async watcher => {
       await watcher.start();
     });
+    if (this.smartserve) {
+      await this.smartserve.start();
+    }
   }
 
   /**
    * stops the execution of any active Watchers
    */
   public async stop() {
+    if (this.smartserve) {
+      await this.smartserve.stop();
+    }
     this.watcherMap.forEach(async watcher => {
       await watcher.stop();
     });
