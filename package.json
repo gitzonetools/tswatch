@@ -18,12 +18,12 @@
     "@gitzone/tsbuild": "^2.1.17",
     "@gitzone/tstest": "^1.0.28",
     "@pushrocks/tapbundle": "^3.2.0",
-    "@types/node": "^13.7.7",
+    "@types/node": "^13.9.0",
     "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0"
   },
   "dependencies": {
-    "@gitzone/tsbundle": "^1.0.50",
+    "@gitzone/tsbundle": "^1.0.51",
     "@gitzone/tsrun": "^1.2.8",
     "@pushrocks/early": "^3.0.3",
     "@pushrocks/lik": "^3.0.19",

@@ -38,10 +38,11 @@ export class TsWatch {
         break;
       case 'gitzone_element':
         // lets create a standard server
+        console.log('bundling TypeScript files to "dist_watch" Note: This is for development only!');
         this.smartserve = new plugins.smartserve.SmartServe({
           port: 3001,
           injectReload: true,
-          serveDir: plugins.path.join(paths.cwd, './dist_web/')
+          serveDir: plugins.path.join(paths.cwd, './dist_watch/')
         });
         this.watcherMap.add(
           new Watcher({
@@ -49,8 +50,8 @@ export class TsWatch {
             commandToExecute: async () => {
               const tsbundle = new plugins.tsbundle.TsBundle();
               const htmlHandler = new plugins.tsbundle.HtmlHandler();
-              await tsbundle.buildProduction('./ts_web/index.ts', './dist_web/bundle.js');
-              await htmlHandler.copyHtml();
+              await tsbundle.buildTest('./ts_web/index.ts', './dist_watch/bundle.js');
+              await htmlHandler.copyHtml(plugins.path.join(process.cwd(), './dist_watch/index.html'));
             },
             timeout: null
           })
@@ -98,6 +99,7 @@ export class TsWatch {
       await watcher.start();
     });
     if (this.smartserve) {
+
       await this.smartserve.start();
     }
   }
