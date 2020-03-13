@@ -42,11 +42,6 @@ export class TsWatch {
         console.log(
           'bundling TypeScript files to "dist_watch" Note: This is for development only!'
         );
-        this.smartserve = new plugins.smartserve.SmartServe({
-          port: 3001,
-          injectReload: true,
-          serveDir: plugins.path.join(paths.cwd, './dist_watch/')
-        });
         const parcel = new Parcel();
         await parcel.start();
         break;
