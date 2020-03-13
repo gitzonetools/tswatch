@@ -1,13 +1,6 @@
 import * as path from 'path';
 export { path };
 
-// @gitzone scope
-import * as tsbundle from '@gitzone/tsbundle';
-
-export {
-  tsbundle
-};
-
 // @pushrocks scope
 import * as lik from '@pushrocks/lik';
 import * as smartchok from '@pushrocks/smartchok';
@@ -20,3 +13,11 @@ import * as smartshell from '@pushrocks/smartshell';
 import * as taskbuffer from '@pushrocks/taskbuffer';
 
 export { lik, smartchok, smartcli, smartdelay, smartlog, smartlogDestinationLocal, smartserve, smartshell, taskbuffer };
+
+
+// third party scope
+import parcel from 'parcel-bundler';
+
+export {
+  parcel
+};

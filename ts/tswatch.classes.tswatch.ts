@@ -3,6 +3,7 @@ import * as paths from './tswatch.paths';
 import * as interfaces from './interfaces';
 
 import { Watcher } from './tswatch.classes.watcher';
+import { Parcel } from './tswatch.classes.parcel';
 
 export class TsWatch {
   public watchmode: interfaces.TWatchModes;
@@ -44,18 +45,8 @@ export class TsWatch {
           injectReload: true,
           serveDir: plugins.path.join(paths.cwd, './dist_watch/')
         });
-        this.watcherMap.add(
-          new Watcher({
-            filePathToWatch: plugins.path.join(paths.cwd, './ts_web/'),
-            commandToExecute: async () => {
-              const tsbundle = new plugins.tsbundle.TsBundle();
-              const htmlHandler = new plugins.tsbundle.HtmlHandler();
-              await tsbundle.buildTest('./ts_web/index.ts', './dist_watch/bundle.js');
-              await htmlHandler.copyHtml(plugins.path.join(process.cwd(), './dist_watch/index.html'));
-            },
-            timeout: null
-          })
-        );
+        const parcel = new Parcel();
+        await parcel.start();
         break;
       case 'gitzone_website':
         this.watcherMap.add(
