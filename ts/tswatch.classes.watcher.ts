@@ -21,7 +21,7 @@ export class Watcher {
   });
 
   /**
-   * used to execute 
+   * used to execute
    */
   private executionTask: plugins.taskbuffer.Task = new plugins.taskbuffer.Task({
     name: 'watcherCommandFunctionTask',

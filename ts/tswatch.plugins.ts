@@ -12,12 +12,19 @@ import * as smartserve from '@pushrocks/smartserve';
 import * as smartshell from '@pushrocks/smartshell';
 import * as taskbuffer from '@pushrocks/taskbuffer';
 
-export { lik, smartchok, smartcli, smartdelay, smartlog, smartlogDestinationLocal, smartserve, smartshell, taskbuffer };
-
+export {
+  lik,
+  smartchok,
+  smartcli,
+  smartdelay,
+  smartlog,
+  smartlogDestinationLocal,
+  smartserve,
+  smartshell,
+  taskbuffer
+};
 
 // third party scope
 import parcel from 'parcel-bundler';
 
-export {
-  parcel
-};
+export { parcel };

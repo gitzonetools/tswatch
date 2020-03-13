@@ -39,7 +39,9 @@ export class TsWatch {
         break;
       case 'gitzone_element':
         // lets create a standard server
-        console.log('bundling TypeScript files to "dist_watch" Note: This is for development only!');
+        console.log(
+          'bundling TypeScript files to "dist_watch" Note: This is for development only!'
+        );
         this.smartserve = new plugins.smartserve.SmartServe({
           port: 3001,
           injectReload: true,
@@ -67,14 +69,14 @@ export class TsWatch {
         );
         break;
       case 'gitzone_service':
-          this.watcherMap.add(
-            new Watcher({
-              filePathToWatch: plugins.path.join(paths.cwd, './ts/'),
-              commandToExecute: 'npm run startTs',
-              timeout: null
-            })
-          );
-          break;
+        this.watcherMap.add(
+          new Watcher({
+            filePathToWatch: plugins.path.join(paths.cwd, './ts/'),
+            commandToExecute: 'npm run startTs',
+            timeout: null
+          })
+        );
+        break;
       case 'echoSomething':
         const tsWatchInstanceEchoSomething = new Watcher({
           filePathToWatch: plugins.path.join(paths.cwd, './ts'),
@@ -90,7 +92,6 @@ export class TsWatch {
       await watcher.start();
     });
     if (this.smartserve) {
-
       await this.smartserve.start();
     }
   }
