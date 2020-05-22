@@ -65,7 +65,7 @@ export class Watcher {
     if (typeof this.options.commandToExecute === 'string') {
       if (this.currentExecution) {
         logger.log('ok', `reexecuting ${this.options.commandToExecute}`);
-        process.kill(-this.currentExecution.childProcess.pid);
+        process.kill(this.currentExecution.childProcess.pid, 'SIGQUIT');
       } else {
         logger.log('ok', `executing ${this.options.commandToExecute} for the first time`);
       }
