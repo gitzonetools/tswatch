@@ -20,21 +20,6 @@ export class Watcher {
     executor: 'bash'
   });
 
-  /**
-   * used to execute
-   */
-  private executionTask: plugins.taskbuffer.Task = new plugins.taskbuffer.Task({
-    name: 'watcherCommandFunctionTask',
-    taskFunction: async () => {
-      if (typeof this.options.commandToExecute === 'string') {
-        throw new Error('cannot execute string as task');
-      }
-      await this.options.commandToExecute();
-    },
-    buffered: true,
-    bufferMax: 1
-  });
-
   private currentExecution: plugins.smartshell.IExecResultStreaming;
   private smartchokWatcher = new plugins.smartchok.Smartchok([], {});
   private options: IWatcherConstructorOptions;
@@ -65,16 +50,15 @@ export class Watcher {
     if (typeof this.options.commandToExecute === 'string') {
       if (this.currentExecution) {
         logger.log('ok', `reexecuting ${this.options.commandToExecute}`);
-        process.kill(this.currentExecution.childProcess.pid, 'SIGQUIT');
+        process.kill(this.currentExecution.childProcess.pid, 'SIGINT');
       } else {
         logger.log('ok', `executing ${this.options.commandToExecute} for the first time`);
       }
       this.currentExecution = await this.smartshellInstance.execStreaming(
         this.options.commandToExecute
       );
-      this.currentExecution = null;
     } else {
-      await this.executionTask.trigger();
+      console.log('cannot run execution task');
     }
   }
 
