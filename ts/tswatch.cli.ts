@@ -38,4 +38,6 @@ tswatchCli.addCommand('website').subscribe(async argvArg => {
   await tsWatch.start();
 });
 
-tswatchCli.startParse();
+export const runCli = async () => {
+  tswatchCli.startParse();
+};
