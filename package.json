@@ -3,8 +3,8 @@
   "version": "1.0.43",
   "private": false,
   "description": "watch typescript projects during development",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "dist_ts/index.js",
+  "typings": "dist_ts/index.d.ts",
   "author": "Lossless GmbH",
   "license": "MIT",
   "bin": {
