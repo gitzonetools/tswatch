@@ -18,6 +18,7 @@ watch typescript projects during development
 
 ## Usage
 
+Use TypeScript for best in class intellisense
 
 ## Contribution
 
