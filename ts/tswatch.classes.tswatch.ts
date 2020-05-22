@@ -7,7 +7,7 @@ import { Parcel } from './tswatch.classes.parcel';
 
 export class TsWatch {
   public watchmode: interfaces.TWatchModes;
-  public watcherMap = new plugins.lik.Objectmap<Watcher>();
+  public watcherMap = new plugins.lik.ObjectMap<Watcher>();
   public smartserve: plugins.smartserve.SmartServe;
 
   constructor(watchmodeArg: interfaces.TWatchModes) {
