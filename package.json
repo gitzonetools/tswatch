@@ -11,27 +11,27 @@
     "tswatch": "cli.js"
   },
   "scripts": {
-    "test": "(tstest test/)",
-    "build": "(tsbuild)"
+    "test": "(tstest test/ --web)",
+    "build": "(tsbuild --web)"
   },
   "devDependencies": {
     "@gitzone/tsbuild": "^2.1.24",
-    "@gitzone/tstest": "^1.0.28",
+    "@gitzone/tstest": "^1.0.33",
     "@pushrocks/tapbundle": "^3.2.1",
-    "@types/node": "^14.0.5",
+    "@types/node": "^14.0.14",
     "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0"
   },
   "dependencies": {
-    "@gitzone/tsrun": "^1.2.8",
+    "@gitzone/tsrun": "^1.2.12",
     "@pushrocks/early": "^3.0.3",
-    "@pushrocks/lik": "^4.0.0",
+    "@pushrocks/lik": "^4.0.13",
     "@pushrocks/smartchok": "^1.0.23",
-    "@pushrocks/smartcli": "^3.0.11",
-    "@pushrocks/smartdelay": "^2.0.6",
-    "@pushrocks/smartlog": "^2.0.21",
-    "@pushrocks/smartlog-destination-local": "^8.0.2",
-    "@pushrocks/smartserve": "^1.1.39",
+    "@pushrocks/smartcli": "^3.0.12",
+    "@pushrocks/smartdelay": "^2.0.9",
+    "@pushrocks/smartlog": "^2.0.35",
+    "@pushrocks/smartlog-destination-local": "^8.0.8",
+    "@pushrocks/smartserve": "^1.1.41",
     "@pushrocks/smartshell": "^2.0.26",
     "@pushrocks/taskbuffer": "^2.1.1",
     "@types/parcel-bundler": "^1.12.1",

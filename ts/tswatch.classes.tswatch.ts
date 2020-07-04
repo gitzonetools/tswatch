@@ -24,7 +24,7 @@ export class TsWatch {
           new Watcher({
             filePathToWatch: paths.cwd,
             commandToExecute: 'npm run test2',
-            timeout: null
+            timeout: null,
           })
         );
         break;
@@ -33,7 +33,7 @@ export class TsWatch {
           new Watcher({
             filePathToWatch: paths.cwd,
             commandToExecute: 'npm run test',
-            timeout: null
+            timeout: null,
           })
         );
         break;
@@ -42,7 +42,11 @@ export class TsWatch {
         console.log(
           'bundling TypeScript files to "dist_watch" Note: This is for development only!'
         );
-        const parcel = new Parcel();
+        const parcel = new Parcel(
+          plugins.path.join(process.cwd(), './html/index.html'),
+          plugins.path.join(process.cwd(), './dist_watch'),
+          'index.html'
+        );
         await parcel.start();
         break;
       case 'gitzone_website':
@@ -50,25 +54,23 @@ export class TsWatch {
           new Watcher({
             filePathToWatch: plugins.path.join(paths.cwd, './ts/'),
             commandToExecute: 'npm run startTs',
-            timeout: null
+            timeout: null,
           })
         );
 
         // client directory
-        this.watcherMap.add(
-          new Watcher({
-            filePathToWatch: plugins.path.join(paths.cwd, './ts_web/'),
-            commandToExecute: 'npm run build',
-            timeout: null
-          })
+        const parcelWebsite = new Parcel(
+          plugins.path.join(process.cwd(), './ts_web/index.ts'),
+          plugins.path.join(process.cwd(), './dist_serve'),
+          'bundle.js'
         );
-        break;
+        await parcelWebsite.start();
       case 'gitzone_service':
         this.watcherMap.add(
           new Watcher({
             filePathToWatch: plugins.path.join(paths.cwd, './ts/'),
             commandToExecute: 'npm run startTs',
-            timeout: null
+            timeout: null,
           })
         );
         break;
@@ -76,14 +78,14 @@ export class TsWatch {
         const tsWatchInstanceEchoSomething = new Watcher({
           filePathToWatch: plugins.path.join(paths.cwd, './ts'),
           commandToExecute: 'npm -v',
-          timeout: null
+          timeout: null,
         });
         this.watcherMap.add(tsWatchInstanceEchoSomething);
         break;
       default:
         break;
     }
-    this.watcherMap.forEach(async watcher => {
+    this.watcherMap.forEach(async (watcher) => {
       await watcher.start();
     });
     if (this.smartserve) {
@@ -98,7 +100,7 @@ export class TsWatch {
     if (this.smartserve) {
       await this.smartserve.stop();
     }
-    this.watcherMap.forEach(async watcher => {
+    this.watcherMap.forEach(async (watcher) => {
       await watcher.stop();
     });
   }
