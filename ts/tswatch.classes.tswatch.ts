@@ -65,6 +65,7 @@ export class TsWatch {
           'bundle.js'
         );
         await parcelWebsite.start();
+        break;
       case 'gitzone_service':
         this.watcherMap.add(
           new Watcher({
