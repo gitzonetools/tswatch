@@ -21,7 +21,7 @@ export {
   smartlogDestinationLocal,
   smartserve,
   smartshell,
-  taskbuffer
+  taskbuffer,
 };
 
 // third party scope

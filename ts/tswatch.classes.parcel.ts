@@ -21,10 +21,10 @@ export class Parcel {
     hmrPort: 3003, // The port the HMR socket runs on, defaults to a random free port (0 in node.js resolves to a random free port)
     sourceMaps: true, // Enable or disable sourcemaps, defaults to enabled (minified builds currently always create sourcemaps)
     hmrHostname: '', // A hostname for hot module reload, default to ''
-    detailedReport: false // Prints a detailed report of the bundles, assets, filesizes and times, defaults to false, reports are only printed if watch is disabled
+    detailedReport: false, // Prints a detailed report of the bundles, assets, filesizes and times, defaults to false, reports are only printed if watch is disabled
   };
   public options: plugins.parcel.ParcelOptions;
-  public entryFiles: string | string [] = plugins.path.join(paths.cwd, './html/index.html');
+  public entryFiles: string | string[] = plugins.path.join(paths.cwd, './html/index.html');
 
   public async start() {
     const bundler = new plugins.parcel(this.entryFiles, this.options);
@@ -39,7 +39,7 @@ export class Parcel {
     this.options = {
       ...this.defaultOptions,
       outDir: outputDirArg,
-      outFile: outputFileArg
+      outFile: outputFileArg,
     };
   }
 }

@@ -17,7 +17,7 @@ export class Watcher {
    * used to execute shell commands
    */
   private smartshellInstance = new plugins.smartshell.Smartshell({
-    executor: 'bash'
+    executor: 'bash',
   });
 
   private currentExecution: plugins.smartshell.IExecResultStreaming;

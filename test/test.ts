@@ -12,7 +12,7 @@ tap.test('should start the tswatch instance', async () => {
   await testTsWatchInstance.start();
 });
 
-tap.test('should stop the instance', async tools => {
+tap.test('should stop the instance', async (tools) => {
   tools.delayFor(2000);
   testTsWatchInstance.stop();
 });
