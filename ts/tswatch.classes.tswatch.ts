@@ -3,7 +3,6 @@ import * as paths from './tswatch.paths';
 import * as interfaces from './interfaces';
 
 import { Watcher } from './tswatch.classes.watcher';
-import { Parcel } from './tswatch.classes.parcel';
 
 export class TsWatch {
   public watchmode: interfaces.TWatchModes;
@@ -42,7 +41,7 @@ export class TsWatch {
         console.log(
           'bundling TypeScript files to "dist_watch" Note: This is for development only!'
         );
-        const parcel = new Parcel(
+        const parcel = new plugins.smartparcel.Parcel(
           plugins.path.join(process.cwd(), './html/index.html'),
           plugins.path.join(process.cwd(), './dist_watch'),
           'index.html'
@@ -59,7 +58,7 @@ export class TsWatch {
         );
 
         // client directory
-        const parcelWebsite = new Parcel(
+        const parcelWebsite = new plugins.smartparcel.Parcel(
           plugins.path.join(process.cwd(), './ts_web/index.ts'),
           plugins.path.join(process.cwd(), './dist_serve'),
           'bundle.js'

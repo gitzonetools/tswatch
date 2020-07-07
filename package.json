@@ -31,6 +31,7 @@
     "@pushrocks/smartdelay": "^2.0.9",
     "@pushrocks/smartlog": "^2.0.35",
     "@pushrocks/smartlog-destination-local": "^8.0.8",
+    "@pushrocks/smartparcel": "^1.0.2",
     "@pushrocks/smartserve": "^1.1.41",
     "@pushrocks/smartshell": "^2.0.26",
     "@pushrocks/taskbuffer": "^2.1.1",

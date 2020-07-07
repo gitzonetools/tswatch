@@ -8,6 +8,7 @@ import * as smartcli from '@pushrocks/smartcli';
 import * as smartdelay from '@pushrocks/smartdelay';
 import * as smartlog from '@pushrocks/smartlog';
 import * as smartlogDestinationLocal from '@pushrocks/smartlog-destination-local';
+import * as smartparcel from '@pushrocks/smartparcel';
 import * as smartserve from '@pushrocks/smartserve';
 import * as smartshell from '@pushrocks/smartshell';
 import * as taskbuffer from '@pushrocks/taskbuffer';
@@ -19,12 +20,8 @@ export {
   smartdelay,
   smartlog,
   smartlogDestinationLocal,
+  smartparcel,
   smartserve,
   smartshell,
   taskbuffer,
 };
-
-// third party scope
-import parcel from 'parcel-bundler';
-
-export { parcel };
