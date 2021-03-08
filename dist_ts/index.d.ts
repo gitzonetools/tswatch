@@ -1,2 +1,2 @@
 export * from './tswatch.classes.tswatch';
-import './tswatch.cli';
+export * from './tswatch.cli';
