@@ -66,21 +66,16 @@ export class Watcher {
    * this method sets up a clean exit strategy
    */
   private async setupCleanup() {
-    const cleanup = () => {
-      if (this.currentExecution) {
-        process.kill(-this.currentExecution.childProcess.pid);
-      }
-    };
     process.on('exit', () => {
       console.log('');
       console.log('now exiting!');
-      cleanup();
+      this.stop();
       process.exit(0);
     });
     process.on('SIGINT', () => {
       console.log('');
       console.log('ok! got SIGINT We are exiting! Just cleaning up to exit neatly :)');
-      cleanup();
+      this.stop();
       process.exit(0);
     });
 
@@ -88,7 +83,7 @@ export class Watcher {
     if (this.options.timeout) {
       plugins.smartdelay.delayFor(this.options.timeout).then(() => {
         console.log(`timed out afer ${this.options.timeout} milliseconds! exiting!`);
-        cleanup();
+        this.stop();
         process.exit(0);
       });
     }
@@ -100,7 +95,7 @@ export class Watcher {
   public async stop() {
     await this.smartchokWatcher.stop();
     if (this.currentExecution && !this.currentExecution.childProcess.killed) {
-      process.kill(-this.currentExecution.childProcess.pid);
+      this.currentExecution.kill();
     }
   }
 }
