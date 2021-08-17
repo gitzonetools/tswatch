@@ -15,10 +15,10 @@
     "build": "(tsbuild --web)"
   },
   "devDependencies": {
-    "@gitzone/tsbuild": "^2.1.24",
+    "@gitzone/tsbuild": "^2.1.26",
     "@gitzone/tstest": "^1.0.54",
     "@pushrocks/tapbundle": "^3.2.1",
-    "@types/node": "^16.4.3",
+    "@types/node": "^16.6.1",
     "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0"
   },
