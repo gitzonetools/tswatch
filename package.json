@@ -33,7 +33,7 @@
     "@pushrocks/smartlog-destination-local": "^8.0.8",
     "@pushrocks/smartparcel": "^1.0.9",
     "@pushrocks/smartserve": "^1.1.41",
-    "@pushrocks/smartshell": "^2.0.27",
+    "@pushrocks/smartshell": "^2.0.28",
     "@pushrocks/taskbuffer": "^2.1.1"
   },
   "files": [
