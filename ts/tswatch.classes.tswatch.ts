@@ -46,7 +46,7 @@ export class TsWatch {
           plugins.path.join(process.cwd(), './dist_watch'),
           'index.html'
         );
-        await parcel.start();
+        await parcel.watchAndServe();
         break;
       case 'gitzone_website':
         this.watcherMap.add(
@@ -59,11 +59,11 @@ export class TsWatch {
 
         // client directory
         const parcelWebsite = new plugins.smartparcel.Parcel(
-          plugins.path.join(process.cwd(), './ts_web/index.ts'),
+          plugins.path.join(process.cwd(), './html/index.html'),
           plugins.path.join(process.cwd(), './dist_serve'),
           'bundle.js'
         );
-        await parcelWebsite.start();
+        await parcelWebsite.watchAndServe();
         break;
       case 'gitzone_service':
         this.watcherMap.add(

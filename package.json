@@ -15,26 +15,26 @@
     "build": "(tsbuild --web)"
   },
   "devDependencies": {
-    "@gitzone/tsbuild": "^2.1.26",
-    "@gitzone/tstest": "^1.0.54",
-    "@pushrocks/tapbundle": "^3.2.1",
-    "@types/node": "^16.6.1",
+    "@gitzone/tsbuild": "^2.1.29",
+    "@gitzone/tstest": "^1.0.64",
+    "@pushrocks/tapbundle": "^4.0.8",
+    "@types/node": "^17.0.21",
     "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0"
   },
   "dependencies": {
-    "@gitzone/tsrun": "^1.2.17",
+    "@gitzone/tsrun": "^1.2.18",
     "@pushrocks/early": "^3.0.3",
-    "@pushrocks/lik": "^4.0.13",
+    "@pushrocks/lik": "^5.0.4",
     "@pushrocks/smartchok": "^1.0.23",
     "@pushrocks/smartcli": "^3.0.14",
     "@pushrocks/smartdelay": "^2.0.13",
     "@pushrocks/smartlog": "^2.0.44",
     "@pushrocks/smartlog-destination-local": "^8.0.8",
-    "@pushrocks/smartparcel": "^1.0.9",
+    "@pushrocks/smartparcel": "^1.0.11",
     "@pushrocks/smartserve": "^1.1.41",
-    "@pushrocks/smartshell": "^2.0.28",
-    "@pushrocks/taskbuffer": "^2.1.1"
+    "@pushrocks/smartshell": "^2.0.30",
+    "@pushrocks/taskbuffer": "^2.1.17"
   },
   "files": [
     "ts/**/*",
