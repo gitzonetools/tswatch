@@ -1,6 +1,6 @@
 {
   "name": "@gitzone/tswatch",
-  "version": "1.0.61",
+  "version": "1.0.62",
   "private": false,
   "description": "watch typescript projects during development",
   "main": "dist_ts/index.js",
