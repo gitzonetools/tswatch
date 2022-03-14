@@ -1,8 +1,8 @@
-import * as plugins from './tswatch.plugins';
-import * as paths from './tswatch.paths';
-import * as interfaces from './interfaces';
+import * as plugins from './tswatch.plugins.js';
+import * as paths from './tswatch.paths.js';
+import * as interfaces from './interfaces/index.js';
 
-import { Watcher } from './tswatch.classes.watcher';
+import { Watcher } from './tswatch.classes.watcher.js';
 
 export class TsWatch {
   public watchmode: interfaces.TWatchModes;

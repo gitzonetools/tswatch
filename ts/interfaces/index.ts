@@ -1,1 +1,1 @@
-export * from './interfaces.watchmodes';
+export * from './interfaces.watchmodes.js';

@@ -1,4 +1,4 @@
-import * as plugins from './tswatch.plugins';
+import * as plugins from './tswatch.plugins.js';
 
 export const logger = new plugins.smartlog.Smartlog({
   logContext: {

@@ -1,8 +1,8 @@
-import * as plugins from './tswatch.plugins';
-import * as paths from './tswatch.paths';
-import { logger } from './tswatch.logging';
+import * as plugins from './tswatch.plugins.js';
+import * as paths from './tswatch.paths.js';
+import { logger } from './tswatch.logging.js';
 
-import { TsWatch } from './tswatch.classes.tswatch';
+import { TsWatch } from './tswatch.classes.tswatch.js';
 
 const tswatchCli = new plugins.smartcli.Smartcli();
 

@@ -1,5 +1,5 @@
-import * as plugins from './tswatch.plugins';
-import { logger } from './tswatch.logging';
+import * as plugins from './tswatch.plugins.js';
+import { logger } from './tswatch.logging.js';
 
 export type TCommandFunction = () => Promise<void>;
 
