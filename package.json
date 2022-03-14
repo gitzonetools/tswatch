@@ -13,10 +13,10 @@
   },
   "scripts": {
     "test": "(tstest test/ --web)",
-    "build": "(tsbuild --web)"
+    "build": "(tsbuild --web --skiplibcheck --allowimplicitany)"
   },
   "devDependencies": {
-    "@gitzone/tsbuild": "^2.1.49",
+    "@gitzone/tsbuild": "^2.1.50",
     "@gitzone/tstest": "^1.0.67",
     "@pushrocks/tapbundle": "^5.0.2",
     "@types/node": "^17.0.21"

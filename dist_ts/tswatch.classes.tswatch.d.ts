@@ -1,6 +1,6 @@
-import * as plugins from './tswatch.plugins';
-import * as interfaces from './interfaces';
-import { Watcher } from './tswatch.classes.watcher';
+import * as plugins from './tswatch.plugins.js';
+import * as interfaces from './interfaces/index.js';
+import { Watcher } from './tswatch.classes.watcher.js';
 export declare class TsWatch {
     watchmode: interfaces.TWatchModes;
     watcherMap: plugins.lik.ObjectMap<Watcher>;

@@ -1,2 +1,2 @@
-export * from './tswatch.classes.tswatch';
-export * from './tswatch.cli';
+export * from './tswatch.classes.tswatch.js';
+export * from './tswatch.cli.js';
