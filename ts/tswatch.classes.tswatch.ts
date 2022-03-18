@@ -49,7 +49,7 @@ export class TsWatch {
           port: 3002,
         });
         
-        const bundleAndReload = async () => {
+        const bundleAndReloadElement = async () => {
           await tsbundle.build(paths.cwd, './html/index.ts', './dist_watch/bundle.js', {
             bundler: 'esbuild'
           });
@@ -59,7 +59,7 @@ export class TsWatch {
           new Watcher({
             filePathToWatch: plugins.path.join(paths.cwd, './ts_web/'),
             functionToCall: async () => {
-              await bundleAndReload();
+              await bundleAndReloadElement();
             },
             timeout: null,
           })
@@ -78,7 +78,7 @@ export class TsWatch {
                   './dist_watch/index.html'
                 )
               );
-              await bundleAndReload();
+              await bundleAndReloadElement();
             },
             timeout: null,
           })
@@ -99,7 +99,7 @@ export class TsWatch {
             timeout: null,
           })
         );
-        const bundleAndReload2 = async () => {
+        const bundleAndReloadWebsite = async () => {
           await tsbundle.build(paths.cwd, './ts_web/index.ts', './dist_serve/bundle.js', {
             bundler: 'esbuild'
           });
@@ -108,7 +108,7 @@ export class TsWatch {
           new Watcher({
             filePathToWatch: plugins.path.join(paths.cwd, './ts_web/'),
             functionToCall: async () => {
-              await bundleAndReload2();
+              await bundleAndReloadWebsite();
             },
             timeout: null,
           })
@@ -127,7 +127,7 @@ export class TsWatch {
                   './dist_watch/index.html'
                 )
               );
-              await bundleAndReload2();
+              await bundleAndReloadWebsite();
             },
             timeout: null,
           })
