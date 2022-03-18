@@ -17,6 +17,8 @@ export class TsWatch {
    * starts the TsWatch instance
    */
   public async start() {
+    const tsbundle = new plugins.tsbundle.TsBundle();
+    const htmlHandler = new plugins.tsbundle.HtmlHandler();
     switch (this.watchmode) {
       case 'test':
         this.watcherMap.add(
@@ -46,8 +48,7 @@ export class TsWatch {
           serveDir: plugins.path.join(paths.cwd, './dist_watch/'),
           port: 3002,
         });
-        const tsbundle = new plugins.tsbundle.TsBundle();
-        const htmlHandler = new plugins.tsbundle.HtmlHandler();
+        
         const bundleAndReload = async () => {
           await tsbundle.build(paths.cwd, './html/index.ts', './dist_watch/bundle.js', {
             bundler: 'esbuild'
