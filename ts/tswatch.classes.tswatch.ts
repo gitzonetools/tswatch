@@ -127,7 +127,7 @@ export class TsWatch {
                   './dist_watch/index.html'
                 )
               );
-              await bundleAndReload();
+              await bundleAndReload2();
             },
             timeout: null,
           })
