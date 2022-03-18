@@ -41,12 +41,25 @@ export class TsWatch {
         console.log(
           'bundling TypeScript files to "dist_watch" Note: This is for development only!'
         );
-        const parcel = new plugins.smartparcel.Parcel(
+        const smartserve = new plugins.smartserve.SmartServe({
+          injectReload: true,
+          serveDir: plugins.path.join(paths.cwd, './ts_web/'),
+          port: 3002,
+        });
+        this.watcherMap.add(
+          new Watcher({
+            filePathToWatch: plugins.path.join(paths.cwd, './ts_web/'),
+            commandToExecute: 'npm run bundle',
+            functionToCall: smartserve.reload,
+            timeout: null,
+          })
+        );
+        /* const parcel = new plugins.smartparcel.Parcel(
           plugins.path.join(process.cwd(), './html/index.html'),
           plugins.path.join(process.cwd(), './dist_watch'),
           'index.html'
         );
-        await parcel.watchAndServe();
+        await parcel.watchAndServe(); */
         break;
       case 'gitzone_website':
         this.watcherMap.add(
@@ -58,12 +71,12 @@ export class TsWatch {
         );
 
         // client directory
-        const parcelWebsite = new plugins.smartparcel.Parcel(
+        /* const parcelWebsite = new plugins.smartparcel.Parcel(
           plugins.path.join(process.cwd(), './html/index.html'),
           plugins.path.join(process.cwd(), './dist_serve'),
           'bundle.js'
         );
-        await parcelWebsite.watchAndServe();
+        await parcelWebsite.watchAndServe(); */
         break;
       case 'gitzone_service':
         this.watcherMap.add(

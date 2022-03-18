@@ -16,8 +16,8 @@
     "build": "(tsbuild --web --skiplibcheck --allowimplicitany)"
   },
   "devDependencies": {
-    "@gitzone/tsbuild": "^2.1.50",
-    "@gitzone/tstest": "^1.0.67",
+    "@gitzone/tsbuild": "^2.1.56",
+    "@gitzone/tstest": "^1.0.69",
     "@pushrocks/tapbundle": "^5.0.2",
     "@types/node": "^17.0.21"
   },
@@ -30,8 +30,7 @@
     "@pushrocks/smartdelay": "^2.0.13",
     "@pushrocks/smartlog": "^2.0.44",
     "@pushrocks/smartlog-destination-local": "^8.0.8",
-    "@pushrocks/smartparcel": "^1.0.13",
-    "@pushrocks/smartserve": "^1.1.41",
+    "@pushrocks/smartserve": "^2.0.0",
     "@pushrocks/smartshell": "^2.0.30",
     "@pushrocks/taskbuffer": "^2.1.17"
   },

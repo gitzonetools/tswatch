@@ -1,11 +1,10 @@
 import * as plugins from './tswatch.plugins.js';
 import { logger } from './tswatch.logging.js';
 
-export type TCommandFunction = () => Promise<void>;
-
 export interface IWatcherConstructorOptions {
   filePathToWatch: string;
-  commandToExecute: string | TCommandFunction;
+  commandToExecute?: string;
+  functionToCall?: () => Promise<any>;
   timeout?: number;
 }
 
@@ -47,7 +46,7 @@ export class Watcher {
    * updates the current execution
    */
   private async updateCurrentExecution() {
-    if (typeof this.options.commandToExecute === 'string') {
+    if (this.options.commandToExecute) {
       if (this.currentExecution) {
         logger.log('ok', `reexecuting ${this.options.commandToExecute}`);
         this.currentExecution.kill();
@@ -58,7 +57,12 @@ export class Watcher {
         this.options.commandToExecute
       );
     } else {
-      console.log('cannot run execution task');
+      console.log('no executionCommand set');
+    }
+    if (this.options.functionToCall) {
+      this.options.functionToCall();
+    } else {
+      console.log('no functionToCall set.')
     }
   }
 
