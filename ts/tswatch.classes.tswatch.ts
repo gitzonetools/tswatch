@@ -43,17 +43,26 @@ export class TsWatch {
         );
         const smartserve = new plugins.smartserve.SmartServe({
           injectReload: true,
-          serveDir: plugins.path.join(paths.cwd, './ts_web/'),
+          serveDir: plugins.path.join(paths.cwd, './dist_watch/'),
           port: 3002,
         });
+        const tsbundle = new plugins.tsbundle.TsBundle();
+        const bundleAndReload = async () => {
+          await tsbundle.build(paths.cwd, './ts_web/index.ts', './dist_watch/bundle.js', {
+            bundler: 'esbuild'
+          });
+          await smartserve.reload();
+        }
         this.watcherMap.add(
           new Watcher({
             filePathToWatch: plugins.path.join(paths.cwd, './ts_web/'),
-            commandToExecute: 'npm run bundle',
-            functionToCall: smartserve.reload,
+            functionToCall: async () => {
+              await bundleAndReload();
+            },
             timeout: null,
           })
         );
+        await smartserve.start();
         /* const parcel = new plugins.smartparcel.Parcel(
           plugins.path.join(process.cwd(), './html/index.html'),
           plugins.path.join(process.cwd(), './dist_watch'),
@@ -66,6 +75,13 @@ export class TsWatch {
           new Watcher({
             filePathToWatch: plugins.path.join(paths.cwd, './ts/'),
             commandToExecute: 'npm run startTs',
+            timeout: null,
+          })
+        );
+        this.watcherMap.add(
+          new Watcher({
+            filePathToWatch: plugins.path.join(paths.cwd, './ts_web/'),
+            commandToExecute: 'npm run bundle',
             timeout: null,
           })
         );

@@ -1,5 +1,12 @@
+// node native scope
 import * as path from 'path';
 export { path };
+
+// @gitzone scope
+import * as tsbundle from '@gitzone/tsbundle';
+export {
+  tsbundle
+}
 
 // @pushrocks scope
 import * as lik from '@pushrocks/lik';
