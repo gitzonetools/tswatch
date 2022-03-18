@@ -103,7 +103,6 @@ export class TsWatch {
           await tsbundle.build(paths.cwd, './ts_web/index.ts', './dist_serve/bundle.js', {
             bundler: 'esbuild'
           });
-          await smartserve.reload();
         }
         this.watcherMap.add(
           new Watcher({
