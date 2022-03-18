@@ -1,5 +1,7 @@
 import * as path from 'path';
 export { path };
+import * as tsbundle from '@gitzone/tsbundle';
+export { tsbundle };
 import * as lik from '@pushrocks/lik';
 import * as smartchok from '@pushrocks/smartchok';
 import * as smartcli from '@pushrocks/smartcli';

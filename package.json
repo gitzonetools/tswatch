@@ -16,13 +16,13 @@
     "build": "(tsbuild --web --skiplibcheck --allowimplicitany)"
   },
   "devDependencies": {
-    "@gitzone/tsbuild": "^2.1.56",
+    "@gitzone/tsbuild": "^2.1.59",
     "@gitzone/tstest": "^1.0.69",
     "@pushrocks/tapbundle": "^5.0.2",
     "@types/node": "^17.0.21"
   },
   "dependencies": {
-    "@gitzone/tsbundle": "^1.0.99",
+    "@gitzone/tsbundle": "^1.0.100",
     "@gitzone/tsrun": "^1.2.31",
     "@pushrocks/early": "^3.0.3",
     "@pushrocks/lik": "^5.0.4",

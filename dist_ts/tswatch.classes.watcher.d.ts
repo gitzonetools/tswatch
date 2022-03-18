@@ -1,7 +1,7 @@
-export declare type TCommandFunction = () => Promise<void>;
 export interface IWatcherConstructorOptions {
     filePathToWatch: string;
-    commandToExecute: string | TCommandFunction;
+    commandToExecute?: string;
+    functionToCall?: () => Promise<any>;
     timeout?: number;
 }
 /**

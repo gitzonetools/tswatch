@@ -47,6 +47,7 @@ export class TsWatch {
           port: 3002,
         });
         const tsbundle = new plugins.tsbundle.TsBundle();
+        const htmlHandler = new plugins.tsbundle.HtmlHandler();
         const bundleAndReload = async () => {
           await tsbundle.build(paths.cwd, './ts_web/index.ts', './dist_watch/bundle.js', {
             bundler: 'esbuild'
@@ -57,6 +58,25 @@ export class TsWatch {
           new Watcher({
             filePathToWatch: plugins.path.join(paths.cwd, './ts_web/'),
             functionToCall: async () => {
+              await bundleAndReload();
+            },
+            timeout: null,
+          })
+        );
+        this.watcherMap.add(
+          new Watcher({
+            filePathToWatch: plugins.path.join(paths.cwd, './html/'),
+            functionToCall: async () => {
+              await htmlHandler.copyHtml(
+                plugins.path.join(
+                  paths.cwd,
+                  './html/index.html'
+                ),
+                plugins.path.join(
+                  paths.cwd,
+                  './dist_watch/index.html'
+                )
+              );
               await bundleAndReload();
             },
             timeout: null,
@@ -78,10 +98,37 @@ export class TsWatch {
             timeout: null,
           })
         );
+        const bundleAndReload2 = async () => {
+          await tsbundle.build(paths.cwd, './ts_web/index.ts', './dist_serve/bundle.js', {
+            bundler: 'esbuild'
+          });
+          await smartserve.reload();
+        }
         this.watcherMap.add(
           new Watcher({
             filePathToWatch: plugins.path.join(paths.cwd, './ts_web/'),
-            commandToExecute: 'npm run bundle',
+            functionToCall: async () => {
+              await bundleAndReload2();
+            },
+            timeout: null,
+          })
+        );
+        this.watcherMap.add(
+          new Watcher({
+            filePathToWatch: plugins.path.join(paths.cwd, './html/'),
+            functionToCall: async () => {
+              await htmlHandler.copyHtml(
+                plugins.path.join(
+                  paths.cwd,
+                  './html/index.html'
+                ),
+                plugins.path.join(
+                  paths.cwd,
+                  './dist_watch/index.html'
+                )
+              );
+              await bundleAndReload();
+            },
             timeout: null,
           })
         );
