@@ -124,7 +124,7 @@ export class TsWatch {
                 ),
                 plugins.path.join(
                   paths.cwd,
-                  './dist_watch/index.html'
+                  './dist_serve/index.html'
                 )
               );
               await bundleAndReloadWebsite();
