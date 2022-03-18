@@ -49,7 +49,7 @@ export class TsWatch {
         const tsbundle = new plugins.tsbundle.TsBundle();
         const htmlHandler = new plugins.tsbundle.HtmlHandler();
         const bundleAndReload = async () => {
-          await tsbundle.build(paths.cwd, './ts_web/index.ts', './dist_watch/bundle.js', {
+          await tsbundle.build(paths.cwd, './html/index.ts', './dist_watch/bundle.js', {
             bundler: 'esbuild'
           });
           await smartserve.reload();
