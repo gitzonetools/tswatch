@@ -13,7 +13,7 @@
   },
   "scripts": {
     "test": "(tstest test/ --web)",
-    "build": "(tsbuild --web --skiplibcheck --allowimplicitany)"
+    "build": "(tsbuild --web --allowimplicitany)"
   },
   "devDependencies": {
     "@gitzone/tsbuild": "^2.1.61",
