@@ -19,7 +19,7 @@
     "@gitzone/tsbuild": "^2.1.61",
     "@gitzone/tstest": "^1.0.70",
     "@pushrocks/tapbundle": "^5.0.3",
-    "@types/node": "^17.0.23"
+    "@types/node": "^17.0.25"
   },
   "dependencies": {
     "@gitzone/tsbundle": "^1.0.102",
@@ -31,9 +31,9 @@
     "@pushrocks/smartdelay": "^2.0.13",
     "@pushrocks/smartlog": "^2.0.44",
     "@pushrocks/smartlog-destination-local": "^8.0.8",
-    "@pushrocks/smartserve": "^2.0.18",
+    "@pushrocks/smartserve": "^2.0.19",
     "@pushrocks/smartshell": "^2.0.30",
-    "@pushrocks/taskbuffer": "^3.0.0"
+    "@pushrocks/taskbuffer": "^3.0.1"
   },
   "files": [
     "ts/**/*",
