@@ -84,12 +84,6 @@ export class TsWatch {
           })
         );
         await smartserve.start();
-        /* const parcel = new plugins.smartparcel.Parcel(
-          plugins.path.join(process.cwd(), './html/index.html'),
-          plugins.path.join(process.cwd(), './dist_watch'),
-          'index.html'
-        );
-        await parcel.watchAndServe(); */
         break;
       case 'gitzone_website':
         this.watcherMap.add(
@@ -132,14 +126,6 @@ export class TsWatch {
             timeout: null,
           })
         );
-
-        // client directory
-        /* const parcelWebsite = new plugins.smartparcel.Parcel(
-          plugins.path.join(process.cwd(), './html/index.html'),
-          plugins.path.join(process.cwd(), './dist_serve'),
-          'bundle.js'
-        );
-        await parcelWebsite.watchAndServe(); */
         break;
       case 'gitzone_service':
         this.watcherMap.add(
