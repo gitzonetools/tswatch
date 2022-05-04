@@ -22,7 +22,7 @@
     "@types/node": "^17.0.31"
   },
   "dependencies": {
-    "@gitzone/tsbundle": "^2.0.0",
+    "@gitzone/tsbundle": "^2.0.2",
     "@gitzone/tsrun": "^1.2.32",
     "@pushrocks/early": "^4.0.2",
     "@pushrocks/lik": "^5.0.4",
