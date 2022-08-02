@@ -48,13 +48,13 @@ export class TsWatch {
           serveDir: plugins.path.join(paths.cwd, './dist_watch/'),
           port: 3002,
         });
-        
+
         const bundleAndReloadElement = async () => {
           await tsbundle.build(paths.cwd, './html/index.ts', './dist_watch/bundle.js', {
-            bundler: 'esbuild'
+            bundler: 'esbuild',
           });
           await smartserve.reload();
-        }
+        };
         this.watcherMap.add(
           new Watcher({
             filePathToWatch: plugins.path.join(paths.cwd, './ts_web/'),
@@ -68,16 +68,11 @@ export class TsWatch {
           new Watcher({
             filePathToWatch: plugins.path.join(paths.cwd, './html/'),
             functionToCall: async () => {
-              await htmlHandler.copyHtml(
-                plugins.path.join(
-                  paths.cwd,
-                  './html/index.html'
-                ),
-                plugins.path.join(
-                  paths.cwd,
-                  './dist_watch/index.html'
-                )
-              );
+              await htmlHandler.processHtml({
+                from: plugins.path.join(paths.cwd, './html/index.html'),
+                to: plugins.path.join(paths.cwd, './dist_watch/index.html'),
+                minify: false,
+              });
               await bundleAndReloadElement();
             },
             timeout: null,
@@ -95,9 +90,9 @@ export class TsWatch {
         );
         const bundleAndReloadWebsite = async () => {
           await tsbundle.build(paths.cwd, './ts_web/index.ts', './dist_serve/bundle.js', {
-            bundler: 'esbuild'
+            bundler: 'esbuild',
           });
-        }
+        };
         this.watcherMap.add(
           new Watcher({
             filePathToWatch: plugins.path.join(paths.cwd, './ts_web/'),
@@ -111,16 +106,11 @@ export class TsWatch {
           new Watcher({
             filePathToWatch: plugins.path.join(paths.cwd, './html/'),
             functionToCall: async () => {
-              await htmlHandler.copyHtml(
-                plugins.path.join(
-                  paths.cwd,
-                  './html/index.html'
-                ),
-                plugins.path.join(
-                  paths.cwd,
-                  './dist_serve/index.html'
-                )
-              );
+              await htmlHandler.processHtml({
+                from: plugins.path.join(paths.cwd, './html/index.html'),
+                to: plugins.path.join(paths.cwd, './dist_serve/index.html'),
+                minify: false,
+              });
               await bundleAndReloadWebsite();
             },
             timeout: null,
