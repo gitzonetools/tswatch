@@ -7,6 +7,9 @@ import { TsWatch } from './tswatch.classes.tswatch.js';
 const tswatchCli = new plugins.smartcli.Smartcli();
 
 // standard behaviour will assume gitzone setup
+tswatchCli.standardCommand().subscribe((argvArg => {
+  tswatchCli.triggerCommand('npm', {});
+}))
 
 tswatchCli.addCommand('element').subscribe(async (argvArg) => {
   logger.log('info', `running watch task for a gitzone element project`);

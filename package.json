@@ -16,18 +16,18 @@
     "build": "(tsbuild --web --allowimplicitany)"
   },
   "devDependencies": {
-    "@gitzone/tsbuild": "^2.1.63",
-    "@gitzone/tstest": "^1.0.72",
+    "@gitzone/tsbuild": "^2.1.65",
+    "@gitzone/tstest": "^1.0.73",
     "@pushrocks/tapbundle": "^5.0.4",
     "@types/node": "^18.6.3"
   },
   "dependencies": {
-    "@gitzone/tsbundle": "^2.0.6",
+    "@gitzone/tsbundle": "^2.0.7",
     "@gitzone/tsrun": "^1.2.37",
     "@pushrocks/early": "^4.0.3",
     "@pushrocks/lik": "^6.0.0",
     "@pushrocks/smartchok": "^1.0.23",
-    "@pushrocks/smartcli": "^3.0.14",
+    "@pushrocks/smartcli": "^4.0.3",
     "@pushrocks/smartdelay": "^2.0.13",
     "@pushrocks/smartlog": "^3.0.1",
     "@pushrocks/smartlog-destination-local": "^8.0.8",
