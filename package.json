@@ -27,7 +27,7 @@
     "@pushrocks/early": "^4.0.3",
     "@pushrocks/lik": "^6.0.0",
     "@pushrocks/smartchok": "^1.0.23",
-    "@pushrocks/smartcli": "^4.0.4",
+    "@pushrocks/smartcli": "^4.0.5",
     "@pushrocks/smartdelay": "^2.0.13",
     "@pushrocks/smartlog": "^3.0.1",
     "@pushrocks/smartlog-destination-local": "^8.0.8",
