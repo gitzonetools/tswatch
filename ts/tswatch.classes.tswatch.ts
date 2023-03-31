@@ -79,7 +79,6 @@ export class TsWatch {
             timeout: null,
           })
         );
-        await this.typedserver.start();
         break;
       case 'gitzone_website':
         this.watcherMap.add(
