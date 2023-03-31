@@ -7,7 +7,7 @@ import { Watcher } from './tswatch.classes.watcher.js';
 export class TsWatch {
   public watchmode: interfaces.TWatchModes;
   public watcherMap = new plugins.lik.ObjectMap<Watcher>();
-  public smartserve: plugins.smartserve.SmartServe;
+  public typedserver: plugins.typedserver.TypedServer;
 
   constructor(watchmodeArg: interfaces.TWatchModes) {
     this.watchmode = watchmodeArg;
@@ -43,7 +43,8 @@ export class TsWatch {
         console.log(
           'bundling TypeScript files to "dist_watch" Note: This is for development only!'
         );
-        const smartserve = new plugins.smartserve.SmartServe({
+        this.typedserver = new plugins.typedserver.TypedServer({
+          cors: true,
           injectReload: true,
           serveDir: plugins.path.join(paths.cwd, './dist_watch/'),
           port: 3002,
@@ -53,7 +54,7 @@ export class TsWatch {
           await tsbundle.build(paths.cwd, './html/index.ts', './dist_watch/bundle.js', {
             bundler: 'esbuild',
           });
-          await smartserve.reload();
+          await this.typedserver.reload();
         };
         this.watcherMap.add(
           new Watcher({
@@ -78,7 +79,7 @@ export class TsWatch {
             timeout: null,
           })
         );
-        await smartserve.start();
+        await this.typedserver.start();
         break;
       case 'gitzone_website':
         this.watcherMap.add(
@@ -140,8 +141,8 @@ export class TsWatch {
     this.watcherMap.forEach(async (watcher) => {
       await watcher.start();
     });
-    if (this.smartserve) {
-      await this.smartserve.start();
+    if (this.typedserver) {
+      await this.typedserver.start();
     }
   }
 
@@ -149,8 +150,8 @@ export class TsWatch {
    * stops the execution of any active Watchers
    */
   public async stop() {
-    if (this.smartserve) {
-      await this.smartserve.stop();
+    if (this.typedserver) {
+      await this.typedserver.stop();
     }
     this.watcherMap.forEach(async (watcher) => {
       await watcher.stop();

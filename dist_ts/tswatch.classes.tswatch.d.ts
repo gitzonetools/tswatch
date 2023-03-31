@@ -4,7 +4,7 @@ import { Watcher } from './tswatch.classes.watcher.js';
 export declare class TsWatch {
     watchmode: interfaces.TWatchModes;
     watcherMap: plugins.lik.ObjectMap<Watcher>;
-    smartserve: plugins.smartserve.SmartServe;
+    typedserver: plugins.typedserver.TypedServer;
     constructor(watchmodeArg: interfaces.TWatchModes);
     /**
      * starts the TsWatch instance

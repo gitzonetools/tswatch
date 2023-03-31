@@ -22,6 +22,7 @@
     "@types/node": "^18.6.3"
   },
   "dependencies": {
+    "@apiglobal/typedserver": "^2.0.44",
     "@gitzone/tsbundle": "^2.0.7",
     "@gitzone/tsrun": "^1.2.37",
     "@pushrocks/early": "^4.0.3",
@@ -30,8 +31,7 @@
     "@pushrocks/smartcli": "^4.0.5",
     "@pushrocks/smartdelay": "^2.0.13",
     "@pushrocks/smartlog": "^3.0.1",
-    "@pushrocks/smartlog-destination-local": "^8.0.8",
-    "@pushrocks/smartserve": "^2.0.28",
+    "@pushrocks/smartlog-destination-local": "^9.0.0",
     "@pushrocks/smartshell": "^2.0.30",
     "@pushrocks/taskbuffer": "^3.0.2"
   },
